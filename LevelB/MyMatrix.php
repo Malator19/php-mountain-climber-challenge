@@ -84,6 +84,36 @@ class MyMatrix
     public function fillZero()
     {
         /** @TODO */
+        $copy = $this->matrix;
+
+        for ($i = 0; $i < $this->iMax; ++$i) {
+            for ($j = 0; $j < $this->jMax; ++$j) {
+
+                // Check if the value is zero
+                if ($this->matrix[$i][$j] == 0) {
+
+                    // Set the value to of the entire line to zero
+                    for ($u = 0; $u < $this->iMax; ++$u) {
+                        for ($v = 0; $v < $this->jMax; ++$v) {
+                            if ($i === $u) {
+                                $copy[$u][$v] = 0;
+                            }
+                        }
+                    }
+
+                    // Set the value to of the entire column to zero
+                    for ($u = 0; $u < $this->iMax; ++$u) {
+                        for ($v = 0; $v < $this->jMax; ++$v) {
+                            if ($j === $v) {
+                                $copy[$u][$v] = 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        $this->matrix = $copy;
 
         return $this;
     }
