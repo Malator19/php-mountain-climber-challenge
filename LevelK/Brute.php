@@ -23,5 +23,27 @@ class Brute
     {
 
         // @TODO
+        $result = 'aaaa';
+        $expected = $this->hash;
+
+        while ($result != 'zzzz') {
+            // echo($result.'->'.md5($result).'=>'.$expected."\n");
+            if (md5($result) == $expected) {
+                break;
+            }
+            if (crc32($result) == $expected) {
+                break;
+            }
+            if (base64_encode($result) == $expected) {
+                break;
+            }
+            if (sha1($result) == $expected) {
+                break;
+            }
+            $result++;
+        }
+
+        $this->origin = $result;
+        var_dump($result);
     }
 }
